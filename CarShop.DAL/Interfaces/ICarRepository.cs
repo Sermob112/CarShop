@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CarShop.DAL.Interfaces
 {
-    public interface ICarRepository : IBaseRepository<Car>
+    public interface ICarRepository : IBaseRepository<Place>
     {
-        Car GetByCarNum(string carNum);
+       Task<Place> GetByCarNum(int carNum);
 
     }
 }

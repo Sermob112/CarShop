@@ -16,6 +16,6 @@ namespace CarShop.Domain.Entity
         public DateTime Off { get; set; }
 
 
-        public virtual ICollection<Order> orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

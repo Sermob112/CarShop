@@ -13,7 +13,7 @@ namespace CarShop.Domain.Entity
         public string Password { get; set; }
         /* public Role role { get; set; }*/
 
-        public ICollection<Car> ViewCars { get; set; }
+        public ICollection<Car> Cars { get; set; }
         public ICollection<Order> Orders { get; set; }
     }
 }

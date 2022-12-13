@@ -29,7 +29,8 @@ namespace CarShop.DAL.Repositories
 
         public IQueryable<Car> GetAll()
         {
-            return _db.Cars;
+           /* return _db.Cars;*/
+            throw new NotImplementedException();
         }
     }
 }

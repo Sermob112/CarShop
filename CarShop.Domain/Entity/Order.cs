@@ -13,7 +13,7 @@ namespace CarShop.Domain.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public string userId { get; set; }
+        public int userId { get; set; }
         public int placeId { get; set; }
         public int carId { get; set; }
         public System.DateTime ON { get; set; }

@@ -18,7 +18,7 @@ namespace CarShop.Domain.Entity
         public TypeCar mark { get; set; }
         public string carNum { get; set; }
 
-        public virtual User users { get; set; }
+        public virtual User Users { get; set; }
 
     }
 }

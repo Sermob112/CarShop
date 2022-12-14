@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop", "CarShop\CarShop.csproj", "{139752D9-0365-48CD-8373-DA5328903D75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarShop", "CarShop\CarShop.csproj", "{139752D9-0365-48CD-8373-DA5328903D75}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{92071E46-E876-4C90-A995-73838726A60E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{175A3375-96E2-4337-809D-BBACC4CED915}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.DAL", "CarShop.DAL\CarShop.DAL.csproj", "{B5ABB57A-F79C-453B-B778-8B86BD56F74D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarShop.DAL", "CarShop.DAL\CarShop.DAL.csproj", "{B5ABB57A-F79C-453B-B778-8B86BD56F74D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.Domain", "CarShop.Domain\CarShop.Domain.csproj", "{A5F45DBA-D6B1-4574-9ED1-BB0A1E1E5B5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarShop.Domain", "CarShop.Domain\CarShop.Domain.csproj", "{A5F45DBA-D6B1-4574-9ED1-BB0A1E1E5B5F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{9CF71AF3-E457-493A-8DAA-4AF510CE017A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.Service", "CarShop.Service\CarShop.Service.csproj", "{8253B995-D9B3-4A64-A259-0C5A0B89B7D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,10 @@ Global
 		{A5F45DBA-D6B1-4574-9ED1-BB0A1E1E5B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5F45DBA-D6B1-4574-9ED1-BB0A1E1E5B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5F45DBA-D6B1-4574-9ED1-BB0A1E1E5B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8253B995-D9B3-4A64-A259-0C5A0B89B7D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8253B995-D9B3-4A64-A259-0C5A0B89B7D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8253B995-D9B3-4A64-A259-0C5A0B89B7D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8253B995-D9B3-4A64-A259-0C5A0B89B7D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B5ABB57A-F79C-453B-B778-8B86BD56F74D} = {92071E46-E876-4C90-A995-73838726A60E}
 		{A5F45DBA-D6B1-4574-9ED1-BB0A1E1E5B5F} = {175A3375-96E2-4337-809D-BBACC4CED915}
+		{8253B995-D9B3-4A64-A259-0C5A0B89B7D6} = {9CF71AF3-E457-493A-8DAA-4AF510CE017A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87183723-0E0B-4C10-B70F-13EF9710927D}

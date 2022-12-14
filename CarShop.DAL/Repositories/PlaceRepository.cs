@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarShop.DAL.Repositories
 {
-    public class PlaceRepository : ICarRepository
+    public class PlaceRepository : IBaseRepository<Place>
     {
         private readonly ApplicationDbContext _db;
 
@@ -17,27 +17,27 @@ namespace CarShop.DAL.Repositories
         {
             _db = db;
         }
-        public Task<bool> Create(Place entity)
+        public async Task Create(Place entity)
         
         {
-           _db.Places.AddAsync(entity);
-            _db.SaveChangesAsync();
-            return Task.FromResult(true);
+            await _db.Places.AddAsync(entity);
+            await _db.SaveChangesAsync();
+           
         }
 
-        public bool Delete(Place entity)
+        public async Task Delete(Place entity)
         {
             _db.Remove(entity);
-            _db.SaveChanges();
-            return true;
+            await _db.SaveChangesAsync();
+           
         }
 
-        public bool Delete(int id)
+        public async Task Delete(int id)
         {
             var place = _db.Places.FirstOrDefault(x => x.id == id);
             _db.Remove(place);
-            _db.SaveChanges();
-            return true;
+            await _db.SaveChangesAsync();
+      
         }
 
         public async Task<Place> Get(int id)
@@ -45,16 +45,22 @@ namespace CarShop.DAL.Repositories
             return await _db.Places.FirstOrDefaultAsync(x => x.id == id);
         }
 
-        public List<Place> GetAll()
+        public IQueryable<Place> GetAll()
         {
-            return  _db.Places.ToList();
+            return  _db.Places;
         }
 
-        public async Task<Place> GetByCarNum(int carNum)
+        public async Task<Place> GetByPlace(int carNum)
         {
             return await _db.Places.FirstOrDefaultAsync(x => x.price == carNum);
         }
+        public async Task<Place> Update(Place entity)
+        {
+            _db.Places.Update(entity);
+            await _db.SaveChangesAsync();
 
-     
+            return entity;
+        }
+
     }
 }

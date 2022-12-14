@@ -2,14 +2,16 @@ using CarShop.DAL;
 using CarShop.DAL.Interfaces;
 using CarShop.DAL.Repositories;
 using CarShop.Domain.Entity;
+using CarShop.Service.Implementations;
+using CarShop.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ICarRepository, PlaceRepository>();
-builder.Services.AddTransient<ApplicationDbContext>();
+builder.Services.AddScoped<IBaseRepository<Place>, PlaceRepository>();
+builder.Services.AddScoped<IPlaceService, PlaceService>();
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connection));

@@ -8,12 +8,12 @@ namespace CarShop.DAL.Interfaces
 {
     public interface IBaseRepository<T>
     {
-        Task<bool> Create(T entity);
+        Task Create(T entity);
         Task<T> Get(int id);
 
-        List<T> GetAll();
+        IQueryable<T> GetAll();
 
-        bool Delete(T entity);
-        bool Delete(int id);
+        Task Delete(T entity);
+        Task Delete(int id);
     }
 }

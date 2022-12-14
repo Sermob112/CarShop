@@ -1,9 +1,9 @@
-﻿@using CarShop.Domain.Entity
-@model List<Place>
+﻿@using CarShop.Domain.Response
+@model List<CarShop.Domain.Entity.Place>
 @{
 
 }
-@foreach (var place in  Model){
+@foreach (var place in Model){
 
 	<p> @place.id</p>
 	<p> @place.price</p>

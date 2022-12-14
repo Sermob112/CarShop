@@ -32,5 +32,15 @@ namespace CarShop.Controllers.Place
             }
             return View("Error", $"{response.Description}");
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await placeService.DeleteById(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("GetCars");
+            }
+            return View("Error", $"{response.Description}");
+        }
     }
 }

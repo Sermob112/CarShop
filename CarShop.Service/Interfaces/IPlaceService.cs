@@ -12,5 +12,7 @@ namespace CarShop.Service.Interfaces
     {
       
         IBaseResponse<List<Place>> GetPlaces();
+        IBaseResponse<Place> GetPlaceById(int id);
+        Task<IBaseResponse<bool>> DeleteById(int id);
     }
 }

@@ -9,6 +9,7 @@ namespace CarShop.Domain.Enum
     public enum StatusCode
     {
         UserNotFound = 0,
+        PlaceNotFound = 100,
         UserAlreadyExists = 1,
 
         CarNotFound = 10,

@@ -1,5 +1,6 @@
 ﻿using CarShop.Domain.Entity;
 using CarShop.Domain.Response;
+using CarShop.Domain.ViewModels.Place;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,11 @@ namespace CarShop.Service.Interfaces
 {
     public interface IPlaceService
     {
-      
+
         IBaseResponse<List<Place>> GetPlaces();
-        IBaseResponse<Place> GetPlaceById(int id);
+        Task<IBaseResponse<PlaceViewModel>> GetPlaceById(int id);
         Task<IBaseResponse<bool>> DeleteById(int id);
+
+        Task<IBaseResponse<Place>> Create(PlaceViewModel place);
     }
 }

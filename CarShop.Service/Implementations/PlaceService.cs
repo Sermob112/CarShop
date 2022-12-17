@@ -2,6 +2,7 @@
 using CarShop.Domain.Entity;
 using CarShop.Domain.Enum;
 using CarShop.Domain.Response;
+using CarShop.Domain.ViewModels.Place;
 using CarShop.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,6 +20,33 @@ namespace CarShop.Service.Implementations
         public PlaceService(IBaseRepository<Place> carRepository)
         {
             this.placeRepository = carRepository;
+        }
+
+        public async Task<IBaseResponse<Place>> Create(PlaceViewModel model)
+        {
+            try
+            {
+                var place = new Place()
+                {
+                   price = model.price
+                   
+                };
+                await placeRepository.Create(place);
+
+                return new BaseResponse<Place>()
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = place
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Place>()
+                {
+                    Description = $"[Create] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
 
         public async Task<IBaseResponse<bool>> DeleteById(int id)
@@ -54,9 +82,42 @@ namespace CarShop.Service.Implementations
             }
         }
 
-        public IBaseResponse<Place> GetPlaceById(int id)
+        public async Task<IBaseResponse<PlaceViewModel>> GetPlaceById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var place = await placeRepository.GetAll().FirstOrDefaultAsync(x => x.id == id);
+                if (place == null)
+                {
+                    return new BaseResponse<PlaceViewModel>()
+                    {
+                        Description = "Пользователь не найден",
+                        StatusCode = StatusCode.UserNotFound
+                    };
+                }
+
+                var data = new PlaceViewModel()
+                {
+                id = place.id,
+                price = place.price
+
+                };
+
+                return new BaseResponse<PlaceViewModel>()
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = data
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<PlaceViewModel>()
+                {
+                    Description = $"[GetPlaceById] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+
         }
 
         public IBaseResponse<List<Place>> GetPlaces()
@@ -83,7 +144,7 @@ namespace CarShop.Service.Implementations
             {
                 return new BaseResponse<List<Place>>()
                 {
-                    Description = $"[GetCars] : {ex.Message}",
+                    Description = $"[GetPlaces] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }

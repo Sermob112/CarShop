@@ -6,6 +6,9 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using CarShop.Domain.Entity;
+using CarShop.Domain.Enum;
+using CarShop.Domain.Helpers;
 
 namespace CarShop.DAL
 {
@@ -22,6 +25,36 @@ namespace CarShop.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>(builder =>
+            {
+                builder.ToTable("Users").HasKey(x => x.Id);
+
+                builder.HasData(new User
+                {
+                    id = 1,
+                    UserName = "ITHomester",
+                    Password = HashPasswordHelper.HashPassowrd("123456"),
+                    Role = Role.Admin
+                });
+
+                builder.Property(x => x.id).ValueGeneratedOnAdd();
+
+                builder.Property(x => x.Password).IsRequired();
+                builder.Property(x => x.UserName).HasMaxLength(100).IsRequired();
+
+                builder.HasOne(x => x.Profile)
+                    .WithOne(x => x.User)
+                    .HasPrincipalKey<User>(x => x.id)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+              /*  builder.HasOne(x => x.Basket)
+                    .WithOne(x => x.User)
+                    .HasPrincipalKey<User>(x => x.Id)
+                    .OnDelete(DeleteBehavior.Cascade);*/
+            });
+
+
+
             modelBuilder.Entity<Place>().HasData(
                     new Place { id = 1, price = 500 },
                     new Place { id = 2, price = 500 },

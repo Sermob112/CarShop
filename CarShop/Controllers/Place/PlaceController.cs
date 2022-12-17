@@ -4,6 +4,7 @@ using CarShop.DAL.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using CarShop.Domain.Entity;
 using CarShop.Service.Interfaces;
+using CarShop.Domain.ViewModels.Place;
 
 namespace CarShop.Controllers.Place
 {
@@ -42,5 +43,38 @@ namespace CarShop.Controllers.Place
             }
             return View("Error", $"{response.Description}");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Save(int id)
+        {
+            if (id == 0)
+                return PartialView();
+
+            var response = await placeService.GetPlaceById(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return PartialView(response.Data);
+            }
+            ModelState.AddModelError("", response.Description);
+            return PartialView();
+        }
+
+        // string Name, string Model, double Speed, string Description, decimal Price, string TypeCar, IFormFile Avatar
+        [HttpPost]
+        public async Task<IActionResult> Save(PlaceViewModel model)
+        {
+            ModelState.Remove("DateCreate");
+            if (ModelState.IsValid)
+            {
+                if (model.id == 0)
+                {
+                   
+                    await placeService.Create(model);
+                }
+               
+            }
+            return View();
+        }
+
     }
 }

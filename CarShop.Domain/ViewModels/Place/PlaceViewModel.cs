@@ -10,6 +10,7 @@ namespace CarShop.Domain.ViewModels.Place
 {
 	public class PlaceViewModel
 	{
+        public int id { get; set; }
         public int price { get; set; }
         public DateTime On { get; set; }
         public DateTime Off { get; set; }

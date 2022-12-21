@@ -13,15 +13,15 @@ namespace CarShop.Domain.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public int userId { get; set; }
+        /*   public int userId { get; set; }*/
         public int placeId { get; set; }
         public int carId { get; set; }
         public System.DateTime ON { get; set; }
         public System.DateTime Off { get; set; }
-        public int quantity { get; set; }
+        public int price { get; set; }
         public string carNum { get; set; }
-        public virtual Car cars { get; set; }
+/*        public virtual Car cars { get; set; }
         public virtual Place place { get; set; }
-        public virtual User users { get; set; }
+        public virtual User users { get; set; }*/
     }
 }

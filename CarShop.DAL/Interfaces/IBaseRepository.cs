@@ -15,5 +15,6 @@ namespace CarShop.DAL.Interfaces
 
         Task Delete(T entity);
         Task Delete(int id);
+        Task<T> Update(T entity);
     }
 }

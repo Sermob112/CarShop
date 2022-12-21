@@ -50,13 +50,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
+    <PackageReference Include="NLog.Web" Version="5.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CarShop.DAL\CarShop.DAL.csproj" />
     <ProjectReference Include="..\CarShop.Domain\CarShop.Domain.csproj" />
     <ProjectReference Include="..\CarShop.Service\CarShop.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Account\" />
   </ItemGroup>
 
 </Project>
